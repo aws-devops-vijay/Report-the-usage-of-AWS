@@ -1,5 +1,5 @@
 #!/bin/bash
-#script to report the usage of aws
+#script to report the usage of aws-resources
 #s3
 #ec2
 #lambda
