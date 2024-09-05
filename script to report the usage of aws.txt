@@ -1,15 +1,25 @@
 #!/bin/bash
-#script to report the usage of aws-resources
-#s3
-#ec2
-#lambda
-#iam
-#to list the s3 buckets
-aws s3 sl > resourceTracker
-# to list the ec2
-aws ec2-instance describe-instances
- aws ec2 describe-instances --output json | jq -r '.Reservations[].Instances[].InstanceId'
-# to list lambda
-aws lambda list-functions > resourceTracker
-#to list iam users
-aws iam list-users > resourceTracker
+#admin: vijay
+#date: 9/5/2024
+#version: v1
+#AWS resources tracker script
+#To track S3, EC2, Lambda, IAM
+
+# To list S3 buckets
+echo "print s3 buckets list"
+aws s3 ls > resourceTracker
+
+# To list EC2 instances
+echo "print ec2-instances list"
+aws ec2 describe-instances --output json | jq -r '.Reservations[].Instances[].InstanceId' >> resourceTracker
+
+# To list Lambda functions
+echo "print lambda-functions list"
+aws lambda list-functions >> resourceTracker
+
+# To list IAM users
+echo "print IAM users list"
+aws iam list-users >> resourceTracker
+
+echo "AWS resources tracking completed!"
+
