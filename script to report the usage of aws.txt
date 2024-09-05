@@ -8,7 +8,7 @@
 aws s3 sl > resourceTracker
 # to list the ec2
 aws ec2-instance describe-instances
-aws ec2 describe-instances | jq '.Reservations[].Instances[].Instancesid'
+ aws ec2 describe-instances --output json | jq -r '.Reservations[].Instances[].InstanceId'
 # to list lambda
 aws lambda list-functions > resourceTracker
 #to list iam users
